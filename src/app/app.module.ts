@@ -10,10 +10,22 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProductComponent } from './product/product.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AccountModule } from './account/account.module';
 
 @NgModule({
-  declarations: [AppComponent, RegisterComponent, HomeComponent, FooterComponent, NavbarComponent, ProductComponent],
-  imports: [BrowserModule, AppRoutingModule, SharedModule, BrowserAnimationsModule],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    FooterComponent,
+    NavbarComponent,
+    ProductComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    SharedModule,
+    BrowserAnimationsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

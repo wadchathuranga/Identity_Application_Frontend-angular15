@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class ValidationMessagesComponent {
   // pull errors, coming from the backend
-  @Input() erroeMesaages: string[] | undefined;
+  @Input() errorMessages: string[] | undefined;
 }

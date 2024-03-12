@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AccountService } from '../account.service';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,10 @@ export class RegisterComponent implements OnInit {
   submitted = false;
   errorMessages: string[] = [];
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private accountService: AccountService
+  ) {}
 
   ngOnInit(): void {
     this.initializeForm();
@@ -56,6 +60,18 @@ export class RegisterComponent implements OnInit {
 
   // register form submit method
   register() {
-    console.log(this.registerForm.value);
+    this.submitted = true;
+    this.errorMessages = [];
+
+    if (this.registerForm.valid) {
+      this.accountService.userRegister(this.registerForm.value).subscribe({
+        next: (response) => {
+          console.log(response);
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
+    }
   }
 }

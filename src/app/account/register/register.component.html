@@ -50,8 +50,8 @@
                     </span>
                 </div>
 
-                <div class="form-floatin">
-                    <app-validation-messages [erroeMesaages]="errorMessages"></app-validation-messages>
+                <div class="form-floatin" *ngIf="errorMessages.length > 0">
+                    <app-validation-messages [errorMessages]="errorMessages"></app-validation-messages>
                 </div>
 
                 <div class="d-grid mt-4 px-1">

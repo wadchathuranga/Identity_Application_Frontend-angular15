@@ -3,10 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './shared/components/errors/not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { ProductComponent } from './product/product.component';
+import { AuthorizationGuard } from './shared/guards/authorization.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'products', component: ProductComponent },
+  {
+    path: '',
+    runGuardsAndResolvers: 'always',
+    canActivate: [AuthorizationGuard],
+    children: [{ path: 'products', component: ProductComponent }],
+  },
+  // { path: 'products', component: ProductComponent },
   // Implenting lazy loading by the following format
   {
     path: 'account',

@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.pattern('^\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}$'),
+          Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$'),
         ],
       ],
       password: [
@@ -82,7 +82,6 @@ export class RegisterComponent implements OnInit {
             this.errorMessages = error.error.errors;
           } else {
             this.errorMessages.push(error.error);
-            console.log(error.error);
           }
         },
       });

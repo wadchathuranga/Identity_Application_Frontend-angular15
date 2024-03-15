@@ -76,4 +76,10 @@ export class LoginComponent implements OnInit {
       });
     }
   }
+
+  resendEmailConfirmationLink() {
+    this.router.navigateByUrl(
+      '/account/send-email/resend-email-confirmation-link'
+    );
+  }
 }

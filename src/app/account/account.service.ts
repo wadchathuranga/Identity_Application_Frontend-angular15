@@ -53,6 +53,13 @@ export class AccountService {
     );
   }
 
+  resendEmailConfirmationLink(email: string) {
+    return this.http.post(
+      `${environment.appUrl}/account/resend-email-confirmation-link${email}`,
+      {}
+    );
+  }
+
   userLogin(userLoginModel: UserLoginModel) {
     return this.http
       .post<UserModel>(`${environment.appUrl}/account/login`, userLoginModel)

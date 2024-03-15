@@ -6,6 +6,7 @@ import { UserLoginModel } from '../shared/models/account/UserLoginModel';
 import { UserModel } from '../shared/models/account/UserModel';
 import { ReplaySubject, map, of } from 'rxjs';
 import { Router } from '@angular/router';
+import { ConfirmEmail } from '../shared/models/account/ConfirmEmail';
 
 @Injectable({
   providedIn: 'root',
@@ -42,6 +43,13 @@ export class AccountService {
     return this.http.post(
       `${environment.appUrl}/account/register`,
       userRegisterModel
+    );
+  }
+
+  confirmEmail(confirmEmailModel: ConfirmEmail) {
+    return this.http.put(
+      `${environment.appUrl}/account/confirm-email`,
+      confirmEmailModel
     );
   }
 

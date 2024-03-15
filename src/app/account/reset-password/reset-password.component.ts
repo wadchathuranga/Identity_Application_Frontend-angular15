@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SharedService } from 'src/app/shared/shared.service';
 import { take } from 'rxjs';
 import { UserModel } from 'src/app/shared/models/account/UserModel';
+import { ResetPasswordModel } from 'src/app/shared/models/account/ResetPasswordModel';
 
 @Component({
   selector: 'app-reset-password',
@@ -52,7 +53,7 @@ export class ResetPasswordComponent implements OnInit {
 
   initializeForm(username: string) {
     this.resetPasswordForm = this.formBuilder.group({
-      email: [{ value: username, dissabled: true }],
+      email: [{ value: username, disabled: true }],
       newPassword: [
         '',
         [
@@ -62,5 +63,36 @@ export class ResetPasswordComponent implements OnInit {
         ],
       ],
     });
+  }
+
+  resetPassword() {
+    this.submitted = true;
+    this.errorMessages = [];
+
+    if (this.resetPasswordForm.valid && this.email && this.token) {
+      const model: ResetPasswordModel = {
+        token: this.token,
+        email: this.email,
+        newPassword: this.resetPasswordForm.get('newPassword')?.value,
+      };
+
+      this.accountService.resetPassword(model).subscribe({
+        next: (response: any) => {
+          this.sharedService.showNotification(
+            true,
+            response.value.title,
+            response.value.message
+          );
+          this.router.navigateByUrl('/account/login');
+        },
+        error: (error) => {
+          if (error.error.errors) {
+            this.errorMessages = error.error.errors;
+          } else {
+            this.errorMessages.push(error.error);
+          }
+        },
+      });
+    }
   }
 }

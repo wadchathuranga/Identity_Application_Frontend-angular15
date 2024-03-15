@@ -9,7 +9,7 @@ import {
 import { Observable, map } from 'rxjs';
 import { AccountService } from 'src/app/account/account.service';
 import { SharedService } from '../shared.service';
-import { UserModel } from '../models/UserModel';
+import { UserModel } from '../models/account/UserModel';
 
 @Injectable({
   providedIn: 'root',

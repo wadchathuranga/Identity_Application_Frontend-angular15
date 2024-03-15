@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { UserRegisterModel } from '../shared/models/UserRegisterModel';
+import { UserRegisterModel } from '../shared/models/account/UserRegisterModel';
 import { environment } from 'src/environments/environment.development';
-import { UserLoginModel } from '../shared/models/UserLoginModel';
-import { UserModel } from '../shared/models/UserModel';
+import { UserLoginModel } from '../shared/models/account/UserLoginModel';
+import { UserModel } from '../shared/models/account/UserModel';
 import { ReplaySubject, map, of } from 'rxjs';
 import { Router } from '@angular/router';
 

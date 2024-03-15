@@ -55,7 +55,14 @@ export class AccountService {
 
   resendEmailConfirmationLink(email: string) {
     return this.http.post(
-      `${environment.appUrl}/account/resend-email-confirmation-link${email}`,
+      `${environment.appUrl}/account/resend-email-confirmation-link/${email}`,
+      {}
+    );
+  }
+
+  forgotUsernameOrPassword(email: string) {
+    return this.http.post(
+      `${environment.appUrl}/account/forgot-username-or-password-link/${email}`,
       {}
     );
   }
